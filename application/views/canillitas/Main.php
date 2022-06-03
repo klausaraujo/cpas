@@ -49,7 +49,7 @@
                                     <th>Apellidos y Nombres</th>
                                     <th>D.N.I./C.EXT.</th>
                                     <th>Género</th>
-                                    <th>F. Nacimiento</th>
+                                    <th>F.Nacimiento</th>
                                     <th>Estado</th>
                                  </tr>
                               </thead>
