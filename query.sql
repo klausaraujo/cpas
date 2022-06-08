@@ -54,14 +54,14 @@ CREATE TABLE modulo  (
   orden smallint(4) NOT NULL,
   PRIMARY KEY (idmodulo)) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 	
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Registro de Canillitas','Módulo Canillitas','canillitas.png','canillitas','1','fa fa-user',1);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Registro de Atenciones','Módulo Atenciones','atenciones.png','#','1','fa fa-user',2);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Trámite Documentario','Módulo Trámite','tramite.png','#','1','fa fa-user',3);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Caja Chica e Ingresos','Módulo Caja','caja.png','#','1','fa fa-user',4);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Inventarios y Patrimonio','Módulo Inventarios','inventarios.png','#','1','fa fa-user',5);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Contabilidad y Finanzas','Módulo Contable','contabilidad.png','#','1','fa fa-user',6);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Registro de Canillitas','Módulo Canillitas','canillitas.png','canillitas','1','fa fa-list-alt',1);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Registro de Atenciones','Módulo Atenciones','atenciones.png','#','1','fa fa-medkit',2);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Trámite Documentario','Módulo Trámite','tramite.png','#','1','fa fa-newspaper-o',3);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Caja Chica e Ingresos','Módulo Caja','caja.png','#','1','fa fa-calculator',4);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Inventarios y Patrimonio','Módulo Inventarios','inventarios.png','#','1','fa fa-calendar-check-o',5);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Contabilidad y Finanzas','Módulo Contable','contabilidad.png','#','1','fa fa-calculator',6);
 	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Recursos Humanos','Módulo RR.HH.','rrhh.png','#','1','fa fa-user',7);
-	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Seguridad y Parámetros','Módulo Seguridad','seguridad.png','usuarios','1','fa fa-user',8);
+	INSERT INTO modulo (descripcion,menu,icono,url,imagen,mini,orden) VALUES ('Módulo de Seguridad y Parámetros','Módulo Seguridad','seguridad.png','usuarios','1','fa fa-wrench',8);
 
 CREATE TABLE modulo_rol  (	
 	idmodulorol smallint(4) NOT NULL AUTO_INCREMENT,
