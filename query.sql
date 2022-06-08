@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS canillita_estudios;
+DROP TABLE IF EXISTS carreras_universitarias;
+DROP TABLE IF EXISTS carreras_tecnicas;
+DROP TABLE IF EXISTS situacion_academica;
+DROP TABLE IF EXISTS canillita_familiar;
+DROP TABLE IF EXISTS canillita;
+DROP TABLE IF EXISTS punto_venta;
 DROP TABLE IF EXISTS base_sindical;
 DROP TABLE IF EXISTS parentesco;
 DROP TABLE IF EXISTS condicion;
@@ -2145,3 +2152,167 @@ Create Table punto_venta(
 	PRIMARY KEY(idpuntoventa)) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 	
 	Insert Into punto_venta(puntoventa,ubigeo,latitud,longitud) Values('NO ESPECÍFICO','150101','-12.0467','-77.0322');
+	
+	Create Table canillita(
+	idcanillita smallint(4) NOT NULL AUTO_INCREMENT,
+	dni VarChar(8) Not Null,
+	apellidos VarChar(50),
+	nombres VarChar(50),
+	fecnac datetime,
+	sexo char(1) NOT NULL,
+	idestadocivil smallint(4) NOT NULL,
+	idcondicion smallint(4) NOT NULL,
+	domicilio VarChar(100),
+	Ubigeo VarChar(6),
+	latitud VarChar(50),
+	longitud VarChar(50),
+	telefono01 VarChar(10),
+	telefono02 VarChar(10),
+	correo VarChar(50),
+	idbase smallint(4) NOT NULL,
+	idpuntoVenta smallint(4) NOT NULL,
+	observaciones VarChar(1000),
+	foto varchar(30),
+	usuario_registro smallint(4) NOT NULL,
+	fecha_registro datetime,
+	usuario_actualizacion smallint(4) NOT NULL,
+	fecha_actualizacion datetime,
+	usuario_anulacion smallint(4) NOT NULL,
+	fecha_anulacion datetime,
+	activo Char(1) Default '1',
+	PRIMARY KEY(idcanillita),
+	FOREIGN KEY (idestadocivil) REFERENCES estado_civil (idestadocivil) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idcondicion) REFERENCES condicion (idcondicion) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idbase) REFERENCES base_sindical (idbase) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idpuntoVenta) REFERENCES punto_venta (idpuntoVenta) ON DELETE CASCADE ON UPDATE CASCADE)ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+	
+	Create Table canillita_familiar(
+	idfamiliar smallint(4) NOT NULL AUTO_INCREMENT,
+	idcanillita smallint(4) NOT NULL,
+	dni VarChar(8) Not Null,
+	apellidos VarChar(50),
+	nombres VarChar(50),
+	fecnac Datetime,
+	sexo char(1) NOT NULL,
+	idestadocivil smallint(4) NOT NULL,
+	idparentesco smallint(4) NOT NULL,
+	activo Char(1) Default '1',
+	PRIMARY KEY(idfamiliar),
+	FOREIGN KEY (idcanillita) REFERENCES canillita (idcanillita) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idestadocivil) REFERENCES estado_civil (idestadocivil) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idparentesco) REFERENCES parentesco (idparentesco) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+CREATE TABLE situacion_academica(
+	idsituacion smallint(4) NOT NULL AUTO_INCREMENT,
+	situacion varchar(20),
+	activo Char(1) Default '1',
+	PRIMARY KEY(idsituacion))ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+	
+Insert Into situacion_academica(situacion) Values('[N/A]');
+Insert Into situacion_academica(situacion) Values('EN CURSO');
+Insert Into situacion_academica(situacion) Values('CONCLUIDO');
+Insert Into situacion_academica(situacion) Values('INCOMPLETO');
+	
+Create Table carreras_tecnicas(
+	idcarreratecnica smallint(4) NOT NULL AUTO_INCREMENT,
+	carrera_tecnica varchar(50),
+	activo Char(1) Default '1',
+	PRIMARY KEY(idcarreratecnica)) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+Insert Into carreras_tecnicas(carrera_tecnica) Values('[N/A]');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN INGENIERÍA MINERA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN ARQUITECTURA Y URBANISMO');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN INGENIERÍA CIVIL');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN ELECTRÓNICA INDUSTRIAL');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN DISEÑO GRÁFICO');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN MARKETING');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN CONTABILIDAD');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN MECATRÓNICA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN COMPUTACIÓN E INFORMÁTICA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN AGROPECUARIA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN FARMACIA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN FISIOTERAPIA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN TERAPIA FÍSICA');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN ADMINISTRACIÓN');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN FINANZAS');
+Insert Into carreras_tecnicas(carrera_tecnica) Values('TÉCNICO EN ADMINISTRACIÓN Y FINANZAS');
+
+Create Table carreras_universitarias(
+	idcarrerauniversitaria smallint(4) NOT NULL AUTO_INCREMENT,
+	carrera_universitaria varchar(50),
+	activo Char(1) Default '1',
+	PRIMARY KEY(idcarrerauniversitaria))ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+	
+Insert Into carreras_universitarias(carrera_universitaria) Values('[N/A]');
+Insert Into carreras_universitarias(carrera_universitaria) Values('ADMINISTRACIÓN DE EMPRESAS');
+Insert Into carreras_universitarias(carrera_universitaria) Values('INGENIERÍA INDUSTRIAL');
+Insert Into carreras_universitarias(carrera_universitaria) Values('INGENIERÍA AMBIENTAL');
+Insert Into carreras_universitarias(carrera_universitaria) Values('INGENIERÍA DE SISTEMAS');
+Insert Into carreras_universitarias(carrera_universitaria) Values('CONTABILIDAD');
+Insert Into carreras_universitarias(carrera_universitaria) Values('ECONOMÍA');
+Insert Into carreras_universitarias(carrera_universitaria) Values('ADMINISTRACIÓN DE NEGOCIOS INTERNACIONALES');
+Insert Into carreras_universitarias(carrera_universitaria) Values('ADMINISTRACIÓN DE EMPRESAS');
+Insert Into carreras_universitarias(carrera_universitaria) Values('MARKETING Y MERCADOTECNIA');
+Insert Into carreras_universitarias(carrera_universitaria) Values('ADMINISTRACIÓN DE NEGOCIOS INTERNACIONALES');
+Insert Into carreras_universitarias(carrera_universitaria) Values('CIENCIAS DE LA COMUNICACIÓN');
+Insert Into carreras_universitarias(carrera_universitaria) Values('DERECHO');
+
+Create Table canillita_estudios(
+	idestudios smallint(4) NOT NULL AUTO_INCREMENT,
+	idcanillita smallint(4) NOT NULL,
+	idsituacionprimaria smallint(4) NOT NULL,
+	anioinicioprimaria smallint(4) DEFAULT 0,
+	anioegresoprimaria smallint(4) DEFAULT 0,
+	entidadprimaria varchar(100),
+	idsituacionsecundaria smallint(4) NOT NULL,
+	anioiniciosecundaria smallint(4) DEFAULT 0,
+	anioegresosecundaria smallint(4) DEFAULT 0,
+	entidadsecundaria VarChar(100),
+	idsituaciontecnica smallint(4) NOT NULL,
+	anioiniciotecnica smallint(4) DEFAULT 0,
+	anioegresotecnica smallint(4) DEFAULT 0,
+	entidadtecnica VarChar(100),
+	idcarreratecnica smallint(4) NOT NULL,
+	idsituacionuniversidad smallint(4) NOT NULL,
+	anioiniciouniversidad smallint(4) DEFAULT 0,
+	anioegresouniversidad smallint(4) DEFAULT 0,
+	entidaduniversidad VarChar(100),
+	idcarrerauniversitaria smallint(4) NOT NULL,
+	activo Char(1) Default '1',
+	PRIMARY KEY(idestudios),
+	FOREIGN KEY (idcanillita) REFERENCES canillita (idcanillita) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idcarreratecnica) REFERENCES carreras_tecnicas (idcarreratecnica) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idcarrerauniversitaria) REFERENCES carreras_universitarias (idcarrerauniversitaria) ON DELETE CASCADE ON UPDATE CASCADE)ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
